@@ -2,12 +2,14 @@ public void Main(string argument, UpdateType updateSource)
         {
             //Lighting
             Lighting() {
+                List<IMyInteriorLight> AllNav = new List<IMyInteriorLight>(GridTerminalSystem.Getblock.)
+
                 IMyBlockGroup navRed = GridTerminalSystem.GetBlockGroupWithName("NavRed");
 
 
                 if (navRed == null)
                 {
-                    Echo("Oh my! I couldn't find that block...");
+                    Echo("No Lights on Left Side");
                     return;
                 }
                 List<IMyInteriorLight> RedLights = new List<IMyInteriorLight>();

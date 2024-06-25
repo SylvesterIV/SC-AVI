@@ -14,7 +14,7 @@ public void Main(string argument, UpdateType updateSource)
                 Group.GetBlocks(RedLights);
                 foreach (var block in RedLights)
                 {
-                    block.Color { set; };
+                    Color.set{}
                 } };
 
 

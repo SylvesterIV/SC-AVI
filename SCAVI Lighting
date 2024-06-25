@@ -1,1 +1,23 @@
+public void Main(string argument, UpdateType updateSource)
+        {
+            //Lighting
+            Lighting() {
+                IMyBlockGroup navRed = GridTerminalSystem.GetBlockGroupWithName("NavRed");
 
+
+                if (navRed == null)
+                {
+                    Echo("Oh my! I couldn't find that block...");
+                    return;
+                }
+                List<IMyInteriorLight> RedLights = new List<IMyInteriorLight>();
+                Group.GetBlocks(RedLights);
+                foreach (var block in RedLights)
+                {
+                    block.Color { set; };
+                } };
+
+
+
+
+        }

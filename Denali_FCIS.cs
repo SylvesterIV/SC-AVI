@@ -42,6 +42,7 @@ public string HUD_ID_RX = " ";
 
 public string Callsign = "Unassigned";
 
+public string WarningStatus = " ";
 
 public Program()
 {
@@ -114,7 +115,8 @@ public void Main(string argument)
       Debug.WriteText(String.Format("\nTarget Name: {0}\n", info.Value.Name), true);
       Debug.WriteText(String.Format("Distance to Target: {0}\n", (int)distanceToTarget), true);
       Debug.WriteText(String.Format("Relative Target Speed: {0}\n",  -info.Value.Velocity.Length()), true);
-      Debug.WriteText(String.Format("Relative Target Velocity: {0} {1} {2}\n", (int)targetVelocity.X, (int)targetVelocity.Y, (int)targetVelocity.Z), true);
+      //Debug.WriteText(String.Format("Relative Target Velocity: {0} {1} {2}\n", (int)targetVelocity.X, (int)targetVelocity.Y, (int)targetVelocity.Z), true);
+      Debug.WriteText(string.Format(WarningStatus), true);
     }
 
     
@@ -173,7 +175,20 @@ public void Main(string argument)
       
     lcdS.WriteText(HUD_ID_TX);
 
+    if (api.HasGridAi(Me.CubeGrid.EntityId))
+    {
+        MyTuple<bool, int, int> data = api.GetProjectilesLockedOn(Me.CubeGrid.EntityId);
 
+        if (data.Item2 > 0)
+        {
+            WarningStatus = "MISSILE WARNING";
+        }
+        else
+        {
+             WarningStatus = " ";
+        }
+        Echo(data.Item2.ToString());
+    }
     
    
 }
@@ -221,7 +236,7 @@ public void Broadcast1()
 {
     broadcastTag = "Channel1";
     HUD_ID_TX = "TX C1"; // for displaying what channel you are broadcasting to
-    Callsign = "Apollo";
+    Callsign = "Callsign: Apollo";
     
 }
 
@@ -229,13 +244,13 @@ public void Broadcast2()
 {
     broadcastTag = "Channel2";
     HUD_ID_TX = "TX C2";
-    Callsign = "Artemis";
+    Callsign = "Callsign: Artemis";
 }
 public void Broadcast3()
 {
     broadcastTag = "Channel3";
     HUD_ID_TX = "TX C3"; // for displaying what channel you are broadcasting to
-    Callsign = "Taranis";
+    Callsign = "Callsign: Taranis";
     
 }
 
@@ -243,13 +258,13 @@ public void Broadcast4()
 {
     broadcastTag = "Channel4";
     HUD_ID_TX = "TX C4";
-    Callsign = "Thor";
+    Callsign = "Callsign: Thor";
 }
 public void Broadcast5()
 {
     broadcastTag = "Channel5";
     HUD_ID_TX = "TX C5"; // for displaying what channel you are broadcasting to
-    Callsign = "Hadad";
+    Callsign = "Callsign: Hadad";
     
 }
 

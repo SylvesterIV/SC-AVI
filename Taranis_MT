@@ -1,0 +1,68 @@
+
+   
+    
+
+
+
+
+
+    // watch functional blocks
+// v240607.2
+
+const string BLOCKS = @"
+L1G
+L2G
+R1G
+R2G
+";
+
+List<IMyTerminalBlock> tbs = new List<IMyTerminalBlock>();
+
+public Program() {
+    Runtime.UpdateFrequency = UpdateFrequency.Update100;
+    foreach( string s in BLOCKS.Split('\n') ){
+        if( "" == s )  continue;
+        IMyTerminalBlock tb = GridTerminalSystem.GetBlockWithName( s.Trim() );
+        if( null != tb )  tbs.Add(tb); else Echo( "block \"" + s + "\" not found. skip" );
+    }
+    //List<IMyTerminalBlock> ts = new List<IMyTerminalBlock>();  GridTerminalSystem.GetBlocks( ts );
+    //foreach( IMyTerminalBlock t in ts )  Me.CustomData = Me.CustomData + t.CustomName + "\n";
+}
+
+public void Main(string argument, UpdateType updateSource) {
+    string txt = "";
+
+    foreach( IMyTerminalBlock tb in tbs ){
+        if( tb is IMyFunctionalBlock){
+            IMyFunctionalBlock fb = tb as IMyFunctionalBlock;
+            switch( fb.Enabled & fb.IsFunctional ){
+                case true:  txt += " "; break;
+                case false:  txt += "CRITICAL"; break;
+            }
+        } else {
+            txt += "DESTROYED";
+        }
+
+        IMySlimBlock sb = tb.CubeGrid.GetCubeBlock(tb.Position);
+        if( null != sb ){
+            float pct = 100f * ( sb.BuildIntegrity - sb.CurrentDamage ) / sb.MaxIntegrity;
+            txt += " " + pct.ToString("0").PadLeft( 3, ' ' ) + "%";
+        } else {
+            txt += " ";
+        }
+
+        //txt += " " + tb.CustomName + "\n";
+    }  // foreach()
+
+  
+
+
+            IMyTextPanel ABCDEFG = (IMyTextPanel)GridTerminalSystem.GetBlockWithName("LCD L1 HUD WARNING");
+
+            //Write "Hello Universe" to the LCD
+            ABCDEFG.WriteText(txt);
+    return;
+}
+
+            
+   

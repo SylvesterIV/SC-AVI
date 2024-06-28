@@ -12,6 +12,12 @@ Required blocks:
 Setup:
     Place and name all neccassary blocks. If no name was specified above, feel free to name it whatever
 
+    ALL LCDS MUST BE SET TO TEXT AND IMAGES OR THE SCRIPT WILL CRASH. PLEASE. I BEG OF YOU. DO NOT FORGET THIS.
+
+    ALSO ADD THE FOLLWING CUSTOM DATA TO THE PROGRAMMABLE BLOCK:
+
+    {{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}
+
     ALL pilots much choose a callsign and a corresponding channel to transmit data from. To choose a callsign, type one of the commands listed below into the programmable block argument box and hit "run"
 
         Command: "TX1" -> Channel 1: Callsign Apollo 

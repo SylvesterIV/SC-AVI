@@ -140,7 +140,7 @@ public void Main(string argument)
       Debug.WriteText(String.Format("Relative Target Speed: {0}\n",  -info.Value.Velocity.Length()), true);
       //Debug.WriteText(String.Format("Relative Target Velocity: {0} {1} {2}\n", (int)targetVelocity.X, (int)targetVelocity.Y, (int)targetVelocity.Z), true);
       Debug.WriteText(string.Format(WarningStatus), true);
-      Debug.WriteText(string.Format(RangeId), true);
+   
 
       
       

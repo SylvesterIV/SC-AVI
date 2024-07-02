@@ -1,3 +1,5 @@
+//has COVAS support
+
 public IMyTextPanel Debug;
 public IMyTerminalBlock progBlock;
 

@@ -1,5 +1,3 @@
-//has COVAS support
-
 public IMyTextPanel Debug;
 public IMyTerminalBlock progBlock;
 
@@ -39,11 +37,15 @@ public string channelTag = "none"; // Tag for receiving messages
 IMyBroadcastListener _myBroadcastListener;
 
 public string sourceLCDName = "MCR Data LCD"; // Name of the source LCD
+public string auxLCDName = "MCR AUX LCD"; // Name of the source LCD
 public string targetLCDName = "MCR Receive LCD"; // Name of the target LCD for receiving broadcasts
 public string statusLCDName = "MCR Status LCD";
 
 public string HUD_ID_TX = " ";
 public string HUD_ID_RX = " ";
+
+public string auxtext = " ";
+
 
 public string Callsign = "Unassigned";
 
@@ -131,6 +133,15 @@ public void Main(string argument)
       }
     }
 
+
+    IMyTextPanel lcd = GridTerminalSystem.GetBlockWithName(auxLCDName) as IMyTextPanel;
+      if (lcd != null)
+        {
+        auxtext = lcd.GetText();
+        
+        }
+
+
     //get current target info and display it
     MyDetectedEntityInfo? info = api.GetAiFocus(Me.CubeGrid.EntityId);
     StatusUpdate(info);
@@ -139,12 +150,12 @@ public void Main(string argument)
       
       Debug.WriteText(String.Format("\nTarget Name: {0}\n", info.Value.Name), true);
       Debug.WriteText(String.Format("Distance to Target: {0}\n", (int)distanceToTarget), true);
-      Debug.WriteText(String.Format("Relative Target Speed: {0}\n",  -info.Value.Velocity.Length()), true);
+      Debug.WriteText(String.Format("Relative Target Speed: {0}",  -info.Value.Velocity.Length()), true);
       //Debug.WriteText(String.Format("Relative Target Velocity: {0} {1} {2}\n", (int)targetVelocity.X, (int)targetVelocity.Y, (int)targetVelocity.Z), true);
+      Debug.WriteText(string.Format(auxtext), true);
       Debug.WriteText(string.Format(WarningStatus), true);
-   
-
-      
+     
+    
       
     }
     

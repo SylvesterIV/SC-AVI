@@ -147,14 +147,15 @@ public void Main(string argument)
     StatusUpdate(info);
     if (info.HasValue && !info.Value.IsEmpty()) 
     {
-      
+     
       Debug.WriteText(String.Format("\nTarget Name: {0}\n", info.Value.Name), true);
       Debug.WriteText(String.Format("Distance to Target: {0}\n", (int)distanceToTarget), true);
       Debug.WriteText(String.Format("Relative Target Speed: {0}",  -info.Value.Velocity.Length()), true);
       //Debug.WriteText(String.Format("Relative Target Velocity: {0} {1} {2}\n", (int)targetVelocity.X, (int)targetVelocity.Y, (int)targetVelocity.Z), true);
-      Debug.WriteText(string.Format(auxtext), true);
-      Debug.WriteText(string.Format(WarningStatus), true);
      
+      Debug.WriteText(string.Format(auxtext), true);
+      Debug.WriteText(string.Format("\n"), true);
+      Debug.WriteText(string.Format(WarningStatus), true);
     
       
     }
@@ -215,7 +216,7 @@ public void Main(string argument)
 
     IMyTextPanel lcdS = GridTerminalSystem.GetBlockWithName(statusLCDName) as IMyTextPanel; // display what channel you're broadcasting to on your status LCD
       
-    lcdS.WriteText(ChosenCall);
+    lcdS.WriteText(HUD_ID_RX);
 
     if (api.HasGridAi(Me.CubeGrid.EntityId))
     {

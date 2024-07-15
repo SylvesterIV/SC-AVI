@@ -242,11 +242,11 @@ public void Main(string argument)
     //  if ("RX4" == argument) Channel4();
     //  if ("RX5" == argument) Channel5();
     
-    //  if ("TX1" == argument) Broadcast1(); // Set the broadcast tag depending on the argument received
-    //  if ("TX2" == argument) Broadcast2();
-    //  if ("TX3" == argument) Broadcast3(); // Set the broadcast tag depending on the argument received
-    //  if ("TX4" == argument) Broadcast4();
-    //  if ("TX5" == argument) Broadcast5(); // Set the broadcast tag depending on the argument received
+     if ("TX1" == argument) Broadcast1(); // Set the broadcast tag depending on the argument received
+     if ("TX2" == argument) Broadcast2();
+     if ("TX3" == argument) Broadcast3(); // Set the broadcast tag depending on the argument received
+     if ("TX4" == argument) Broadcast4();
+     if ("TX5" == argument) Broadcast5(); // Set the broadcast tag depending on the argument received
 
      
      
